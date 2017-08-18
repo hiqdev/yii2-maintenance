@@ -1,0 +1,12 @@
+package:
+    type:           yii2-extension
+    name:           yii2-maintenance
+    title:          Module for switching Yii2 project into maintenance mode
+    headline:       Yii2 Maintenance
+    keywords:       yii2, maintenance
+    description:    |
+        This [Yii2] [plugin] provides easy switching Yii2 project into
+        maintenance mode: same page with notice for all requests.
+
+        [yii2]:     http://www.yiiframework.com/
+        [plugin]:   https://github.com/hiqdev/composer-config-plugin

@@ -9,4 +9,20 @@
  */
 
 return [
+    'bootstrap' => ['maintenance'],
+    'components' => [
+        'maintenance' => [
+            'class' => 'hiqdev\maintenance\Maintenance',
+            'enable' => $params['maintenance.enable'],
+        ],
+        'i18n' => [
+            'translations' => [
+                'maintenance' => [
+                    'class' => \yii\i18n\PhpMessageSource::class,
+                    'sourceLanguage' => 'en-US',
+                    'basePath' => '@hiqdev/maintenance/messages',
+                ],
+            ],
+        ],
+    ],
 ];

@@ -9,7 +9,8 @@
  */
 
 return [
-    'maintenance.enabled'   => null,
+    'maintenance.enable'    => $_ENV['MAINTENANCE_ENABLE'],
     'maintenance.title'     => null,
     'maintenance.subtitle'  => null,
+    'maintenance.time'      => null,
 ];

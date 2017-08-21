@@ -19,8 +19,13 @@ class MaintenanceController extends Controller implements ViewContextInterface
         if (Yii::$app->request->isAjax) {
             return false;
         }
-        $time = strtotime(Yii::$app->params['maintenance.time']);
-        $minutes = ceil(($time - time()));
+
+        if (Yii::$app->params['maintenance.time']) {
+            $time = strtotime(Yii::$app->params['maintenance.time']);
+            $minutes = ceil(($time - time()));
+        } else {
+            $minutes = 0;
+        }
 
         return $this->render(Yii::$app->maintenance->viewPath, ['minutes' => $minutes]);
     }

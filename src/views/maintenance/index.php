@@ -31,7 +31,9 @@ var clock;
     </div>
 </div>
 
-<div class="container">
-    <div class="clock"></div>
-</div>
+<?php if ($minutes > 0) : ?>
+    <div class="container">
+        <div class="clock"></div>
+    </div>
+<?php endif; ?>
 

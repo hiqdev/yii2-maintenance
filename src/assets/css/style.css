@@ -99,41 +99,4 @@ body {
     display: inline-block
 }
 
-.lang {
-    position: absolute;
-    right: 0;
-    top: 20px;
-    font-size: 0.875em
-}
 
-.lang a {
-    display: inline-block;
-    text-decoration: none;
-    color: #dbdbdb;
-    position: relative
-}
-
-.lang a:first-child {
-    padding: 0 6px 0 0;
-}
-
-.lang a:first-child:after {
-    content: '';
-    height: 12px;
-    width: 1px;
-    background: #fff;
-    position: absolute;
-    right: 0;
-    top: 5px;
-}
-
-.lang a:hover,
-.lang a.active {
-    text-decoration: underline;
-    color: #fff;
-}
-
-.clock.flip-clock-wrapper {
-    width: 500px;
-    margin: 5em auto;
-}

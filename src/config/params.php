@@ -9,7 +9,7 @@
  */
 
 return [
-    'maintenance.enable'    => !empty($_ENV['MAINTENANCE_ENABLE']),
+    'maintenance.enable'    => isset($_ENV['MAINTENANCE_ENABLE']) ? $_ENV['MAINTENANCE_ENABLE'] : false,
     'maintenance.title'     => null,
     'maintenance.subtitle'  => null,
     'maintenance.time'      => null,

@@ -12,7 +12,7 @@ return [
     'bootstrap' => ['maintenance'],
     'components' => [
         'maintenance' => [
-            'class' => 'hiqdev\maintenance\Maintenance',
+            'class' => \hiqdev\maintenance\Maintenance::class,
             'enable' => $params['maintenance.enable'],
         ],
         'i18n' => [

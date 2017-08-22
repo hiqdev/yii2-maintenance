@@ -12,5 +12,6 @@ return [
     'maintenance.enable'    => isset($_ENV['MAINTENANCE_ENABLE']) ? $_ENV['MAINTENANCE_ENABLE'] : false,
     'maintenance.title'     => null,
     'maintenance.subtitle'  => null,
-    'maintenance.time'      => null,
+    'maintenance.time'      => isset($_ENV['MAINTENANCE_TIME']) ? $_ENV['MAINTENANCE_TIME'] : null,
+    'maintenance.filter'    => null,
 ];

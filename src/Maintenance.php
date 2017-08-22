@@ -2,10 +2,10 @@
 
 namespace hiqdev\maintenance;
 
+use Closure;
 use Yii;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
-use yii\console\Application;
 
 class Maintenance extends Component
 {
@@ -17,26 +17,37 @@ class Maintenance extends Component
 
     public $statusCode = 503;
 
+    /**
+     * Retry-After header
+     * @var boolean|string
+     */
     public $retryAfter = false;
 
     public $route = 'maintenance/index';
 
-    public $applyCallback;
+    /**
+     * @var boolean|callable
+     */
+    public $filter;
 
+    /**
+     * @var bool
+     */
     public $enable = false;
+
+    /**
+     * @var boolean
+     */
+    protected $disable;
 
     public function init()
     {
-        if (Yii::$app instanceof Application) {
-            Yii::$app->controllerMap['maintenance'] = 'hiqdev\maintenance\command\MaintenanceController';
-        } else {
-            if ($this->getIsEnabled()) {
-                $this->filterRules();
-            }
+        if ($this->enable) {
+            $this->filtering();
         }
     }
 
-    protected function filterRules()
+    protected function filtering()
     {
         $app = Yii::$app;
         if ($this->statusCode) {
@@ -53,19 +64,23 @@ class Maintenance extends Component
                 throw new InvalidConfigException('Parameter "statusCode" should be an integer.');
             }
         }
-        $a = boolval($this->enable);
-        if ($a) {
+
+        // Check rules
+        if ($this->filter) {
+            if ($this->filter instanceof Closure) {
+                $this->disable = call_user_func($this->filter, $this);
+            } else {
+                $this->disable = boolval($this->filter);
+            }
+        }
+
+        if (!$this->disable) {
             if ($this->route === 'maintenance/index') {
-                $app->controllerMap['maintenance'] = 'hiqdev\maintenance\controllers\MaintenanceController';
+                $app->controllerMap['maintenance'] = \hiqdev\maintenance\controllers\MaintenanceController::class;
             }
             $app->catchAll = [$this->route];
         } else {
             $app->getResponse()->setStatusCode(self::STATUS_CODE_OK);
         }
-    }
-
-    protected function getIsEnabled()
-    {
-        return true;
     }
 }

@@ -9,7 +9,9 @@
  */
 
 return [
-    'bootstrap' => ['maintenance'],
+    'bootstrap' => [
+        'maintenance' => 'maintenance',
+    ],
     'components' => [
         'maintenance' => [
             'class' => \hiqdev\maintenance\Maintenance::class,

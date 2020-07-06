@@ -8,7 +8,7 @@ use yii\web\JqueryAsset;
 
 class Asset extends AssetBundle
 {
-    public $sourcePath = '@hiqdev/maintenance/assets';
+    public $sourcePath = __DIR__ . '/assets';
 
     public $css = [
         'css/style.css',

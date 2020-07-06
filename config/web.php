@@ -22,7 +22,7 @@ return [
                 'maintenance' => [
                     'class' => \yii\i18n\PhpMessageSource::class,
                     'sourceLanguage' => 'en-US',
-                    'basePath' => '@hiqdev/maintenance/messages',
+                    'basePath' => dirname(__DIR__) . '/src/messages',
                 ],
             ],
         ],
